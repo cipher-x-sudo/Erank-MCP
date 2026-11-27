@@ -94,12 +94,21 @@ def flow_keyword_tool(
     marketplace: str | None = None,
     include_serp: bool = True,
     related_per_page: int = 100,
+    match: str = "default",
+    page: int = 1,
 ) -> dict[str, Any]:
     ctx = resolve_context(client, settings)
     country = country or ctx.country
     marketplace = marketplace or ctx.marketplace
     ref = f"/keyword-tool?keyword={keyword}&country={country}&source={marketplace}"
     out: dict[str, Any] = {"keyword": keyword, "country": country, "marketplace": marketplace}
+    # UI "Match:" dropdown -> exactly one opensearch filter is true
+    if match not in ("exact", "phrase", "default", "broad"):
+        raise ValueError(f"match must be exact|phrase|default|broad, got {match!r}")
+    match_filters = {
+        f"opensearch_filters[{m}_match]": str(m == match).lower()
+        for m in ("exact", "phrase", "default", "broad")
+    }
 
     out["autocomplete"] = client.get(
         "/api/keyword-tool/autocomplete",
@@ -120,11 +129,8 @@ def flow_keyword_tool(
             "keyword": keyword,
             "marketplace": marketplace,
             "country": country,
-            "opensearch_filters[exact_match]": "false",
-            "opensearch_filters[phrase_match]": "false",
-            "opensearch_filters[default_match]": "true",
-            "opensearch_filters[broad_match]": "false",
-            "page": 1,
+            **match_filters,
+            "page": page,
             "per_page": related_per_page,
         },
         referer=ref,
@@ -150,10 +156,7 @@ def flow_keyword_tool(
             "keyword": keyword,
             "marketplace": marketplace,
             "country": country,
-            "opensearch_filters[exact_match]": "false",
-            "opensearch_filters[phrase_match]": "false",
-            "opensearch_filters[default_match]": "true",
-            "opensearch_filters[broad_match]": "false",
+            **match_filters,
         },
         referer=ref,
     )
@@ -170,8 +173,20 @@ def flow_keyword_tool(
     out["google_data"] = client.post(
         "/api/keyword-tool/google-data", json_body=post_body, referer=ref
     )
+    # KD endpoint wants {kw: number} maps for competition + avg_searches (per HAR), not a keyword list
     out["keyword_difficulty"] = client.post(
-        "/api/keyword-tool/keyword-difficulty", json_body=post_body, referer=ref
+        "/api/keyword-tool/keyword-difficulty",
+        json_body={
+            "keyword": keyword,
+            "marketplace": marketplace,
+            "country": country,
+            "competition": _order_values(out["competition"], related_keywords),
+            "avg_searches": _order_values(
+                {r["keyword"]: r.get("avg_searches") for r in _rows(related)}, related_keywords
+            ),
+            "row_offset": (page - 1) * related_per_page,
+        },
+        referer=ref,
     )
 
     if include_serp:
@@ -187,25 +202,24 @@ def flow_keyword_tool(
     return out
 
 
+def _rows(related: Any) -> list[dict[str, Any]]:
+    """related-searches returns {"data": [{keyword, avg_searches: {...}, ...}], "meta": {...}}."""
+    items = related.get("data") if isinstance(related, dict) else related
+    return [i for i in items or [] if isinstance(i, dict) and i.get("keyword")]
+
+
+def _order_values(metric_map: Any, keywords: list[str]) -> dict[str, Any]:
+    """{kw: {"order_value": n, ...}} -> {kw: n} for the given keywords."""
+    m = metric_map if isinstance(metric_map, dict) else {}
+    out = {}
+    for k in keywords:
+        v = m.get(k)
+        out[k] = v.get("order_value", 0) if isinstance(v, dict) else (v or 0)
+    return out
+
+
 def _extract_related_keywords(related: Any, seed: str) -> list[str]:
-    keywords = [seed]
-    if isinstance(related, dict):
-        items = (
-            related.get("data")
-            or related.get("keywords")
-            or related.get("results")
-            or related.get("items")
-            or []
-        )
-        if isinstance(items, dict):
-            items = items.get("data") or items.get("items") or []
-        for item in items if isinstance(items, list) else []:
-            if isinstance(item, str):
-                keywords.append(item)
-            elif isinstance(item, dict):
-                kw = item.get("keyword") or item.get("term") or item.get("query")
-                if kw:
-                    keywords.append(str(kw))
+    keywords = [seed] + [str(r["keyword"]) for r in _rows(related)]
     # Deduplicate preserving order; cap like UI (~100)
     seen: set[str] = set()
     out: list[str] = []

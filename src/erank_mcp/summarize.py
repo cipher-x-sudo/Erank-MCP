@@ -20,87 +20,115 @@ def compact(data: Any, *, max_list: int = 25, depth: int = 0, max_depth: int = 4
     return data
 
 
+def _v(metric: Any) -> Any:
+    """eRank cells are {"value": "2,272", "order_value": 2272, ...}; return the display value."""
+    if isinstance(metric, dict):
+        v = metric.get("value", metric.get("avg_searches"))
+        return None if v in ("", "Unknown", "N/A") else v
+    return metric
+
+
+def _trend(trend: Any) -> list[Any] | None:
+    """search_trend is a list of {date, value} (rows) or {yyyymm: n} (marketplace stats)."""
+    if isinstance(trend, list):
+        return [t.get("value") for t in trend if isinstance(t, dict)]
+    if isinstance(trend, dict):
+        return [trend[k] for k in sorted(trend)]
+    return None
+
+
+def _kw_row(item: dict[str, Any], *, comp: dict, kd: dict, google: dict, tags: dict) -> dict[str, Any]:
+    """One row with the same columns as the eRank Keyword Ideas / Near Matches table."""
+    kw = str(item.get("keyword") or item.get("term"))
+    row = {
+        "keyword": kw,
+        "search_trend": _trend(item.get("search_trend")),
+        "avg_searches": _v(item.get("avg_searches")),
+        "avg_clicks": _v(item.get("avg_clicks")),
+        "avg_ctr": _v(item.get("ctr")),
+        "kd": _v(item.get("keyword_difficulty")) or _v(kd.get(kw)),
+        "etsy_competition": _v(comp.get(kw)) or _v(item.get("competition")),
+        "tag_occurrences": item.get("occurrences", tags.get(kw)),
+        "chars": item.get("character_count", len(kw)),
+        "google_searches": _v(google.get(kw)) or _v(item.get("google")),
+        "is_top_tag": kw in tags,
+    }
+    return {k: v for k, v in row.items() if v is not None}
+
+
+def _as_map(blob: Any) -> dict[str, Any]:
+    return blob if isinstance(blob, dict) else {}
+
+
+def _as_list(blob: Any) -> list[Any]:
+    if isinstance(blob, dict):
+        blob = blob.get("data")
+    return blob if isinstance(blob, list) else []
+
+
+def _ctx(payload: dict[str, Any]) -> dict[str, dict]:
+    tags = {t["keyword"]: t.get("occurrences") for t in _as_list(payload.get("etsy_tags")) if isinstance(t, dict) and t.get("keyword")}
+    return {
+        "comp": _as_map(payload.get("competition")),
+        "kd": _as_map(payload.get("keyword_difficulty")),
+        "google": _as_map(payload.get("google_data")),
+        "tags": tags,
+    }
+
+
 def keyword_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
-    """Build a compact keyword research table from orchestrated responses."""
-    rows: dict[str, dict[str, Any]] = {}
-
-    def upsert(kw: str, **fields: Any) -> None:
-        row = rows.setdefault(kw, {"keyword": kw})
-        row.update({k: v for k, v in fields.items() if v is not None})
-
-    seed = payload.get("keyword")
-    if seed:
-        upsert(str(seed))
-
-    stats = payload.get("stats")
-    if isinstance(stats, dict):
-        upsert(
-            str(seed or stats.get("keyword") or "unknown"),
-            searches=stats.get("searches") or stats.get("search_volume") or stats.get("avg_searches"),
-            competition=stats.get("competition"),
-            difficulty=stats.get("difficulty") or stats.get("keyword_difficulty"),
-        )
-
-    related = payload.get("related_searches")
-    items = []
-    if isinstance(related, dict):
-        items = related.get("data") or related.get("keywords") or related.get("results") or []
-        if isinstance(items, dict):
-            items = items.get("data") or []
-    if isinstance(items, list):
-        for item in items[:50]:
-            if isinstance(item, dict):
-                kw = item.get("keyword") or item.get("term")
-                if kw:
-                    upsert(
-                        str(kw),
-                        searches=item.get("searches") or item.get("search_volume") or item.get("avg_searches"),
-                        competition=item.get("competition"),
-                    )
-
-    competition = payload.get("competition")
-    if isinstance(competition, dict):
-        for item in _iter_named(competition):
-            upsert(item["keyword"], competition=item.get("value") or item.get("competition"))
-
-    difficulty = payload.get("keyword_difficulty")
-    if isinstance(difficulty, dict):
-        for item in _iter_named(difficulty):
-            upsert(item["keyword"], difficulty=item.get("value") or item.get("difficulty"))
-
-    google = payload.get("google_data")
-    if isinstance(google, dict):
-        for item in _iter_named(google):
-            upsert(
-                item["keyword"],
-                google_searches=item.get("searches") or item.get("value") or item.get("google_searches"),
-            )
-
-    return list(rows.values())[:80]
+    """Keyword Ideas tab: every related-searches row merged with competition / KD / Google / tags."""
+    ctx = _ctx(payload)
+    return [_kw_row(i, **ctx) for i in _as_list(payload.get("related_searches")) if isinstance(i, dict) and i.get("keyword")]
 
 
-def _iter_named(blob: dict[str, Any]) -> list[dict[str, Any]]:
-    data = blob.get("data") or blob.get("results") or blob.get("keywords") or blob
-    if isinstance(data, dict) and all(isinstance(v, (int, float, str, dict)) for v in data.values()):
-        # map of keyword -> metric
-        out = []
-        for k, v in data.items():
-            if k in {"status", "success", "message", "meta"}:
-                continue
-            if isinstance(v, dict):
-                out.append({"keyword": k, **v})
-            else:
-                out.append({"keyword": k, "value": v})
-        return out
-    if isinstance(data, list):
-        out = []
-        for item in data:
-            if isinstance(item, dict):
-                kw = item.get("keyword") or item.get("term")
-                if kw:
-                    out.append({"keyword": str(kw), **item})
-        return out
-    return []
+def top_tags(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    """Tags used by top listings for this search, most used first."""
+    tags = _ctx(payload)["tags"]
+    return [{"keyword": k, "occurrences": n} for k, n in sorted(tags.items(), key=lambda kv: -(kv[1] or 0))]
+
+
+def near_matches_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    ctx = _ctx(payload)
+    return [_kw_row(i, **ctx) for i in _as_list(payload.get("near_matches")) if isinstance(i, dict) and i.get("keyword")]
+
+
+def seed_stats(payload: dict[str, Any]) -> dict[str, Any]:
+    s = _as_map(payload.get("stats"))
+    return {
+        "avg_searches": _v(s.get("avg_searches")),
+        "avg_clicks": _v(s.get("avg_clicks")),
+        "avg_ctr": _v(s.get("ctr")),
+        "etsy_competition": _v(s.get("competition")),
+        "search_trend": [{"month": t.get("y"), "value": next((v for k, v in t.items() if k != "y"), None)} for t in s.get("search_trend") or [] if isinstance(t, dict)],
+    }
+
+
+def top_listings_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    tl = _as_map(payload.get("top_listings")).get("listings")
+    keep = ("rank", "listing_id", "title", "shop_name", "price", "views", "daily_views", "num_favorers", "age_in_days", "est_sales", "est_revenue", "tags")
+    return [{k: l.get(k) for k in keep} for l in _as_list(tl) if isinstance(l, dict)]
+
+
+def serp_summary(payload: dict[str, Any]) -> dict[str, Any] | None:
+    s = payload.get("serp_analysis")
+    if not isinstance(s, dict):
+        return None
+    return {k: s.get(k) for k in ("stats", "popular_categories", "prices", "processing_times", "word_cloud") if k in s}
+
+
+def marketplaces_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "marketplace": m.get("marketplace") or key,
+            "avg_searches": _v(m.get("avg_searches")),
+            "avg_clicks": _v(m.get("avg_clicks")),
+            "avg_ctr": _v(m.get("ctr")),
+            "search_trend": _trend(m.get("search_trend")),
+        }
+        for key, m in _as_map(payload.get("marketplace_stats")).items()
+        if isinstance(m, dict)
+    ]
 
 
 def wrap_result(

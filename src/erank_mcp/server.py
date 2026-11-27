@@ -11,7 +11,17 @@ from erank_mcp.catalog import load_catalog
 from erank_mcp.client import ErankError, get_client
 from erank_mcp.config import get_settings
 from erank_mcp.context import reset_context, resolve_context
-from erank_mcp.summarize import compact, keyword_table, wrap_result
+from erank_mcp.summarize import (
+    compact,
+    keyword_table,
+    marketplaces_table,
+    near_matches_table,
+    seed_stats,
+    serp_summary,
+    top_listings_table,
+    top_tags,
+    wrap_result,
+)
 from erank_mcp import workflows
 
 mcp = MCPServer(
@@ -194,10 +204,16 @@ def erank_keyword_research(
     include_marketplace_stats: bool = False,
     related_per_page: int = 100,
     include_full: bool = False,
+    match: str = "default",
+    page: int = 1,
 ) -> dict[str, Any]:
     """
-    Full keyword-tool research flow from the HAR (stats, related, tags, competition,
-    google-data, difficulty). Set include_serp / include_marketplace_stats for heavier calls.
+    Full eRank Keyword Tool, all tabs. Returns:
+    seed (stats + monthly trend), keyword_ideas (Keywords, Search Trend, Avg. Searches,
+    Avg. Clicks, Avg. CTR, KD, Etsy Competition, Tag Occurrences, Chars, Google Searches,
+    is_top_tag), near_matches, top_listings, search_results_analysis (include_serp),
+    marketplaces (include_marketplace_stats).
+    match: default|exact|phrase|broad (UI "Match" dropdown). page: keyword-ideas page.
     """
     settings = get_settings()
     client = get_client()
@@ -215,22 +231,19 @@ def erank_keyword_research(
             marketplace=marketplace,
             include_serp=include_serp,
             related_per_page=related_per_page,
+            match=match,
+            page=page,
         )
         raw["quota_before"] = quota
 
         if include_marketplace_stats:
-            markets = client.get(
-                "/api/keyword-tool/stats/available-marketplaces",
-                referer=f"/keyword-tool?keyword={keyword}&country={country}&source={marketplace}",
-            )
-            raw["available_marketplaces"] = markets
+            # response is a list of {key, marketplace, available_in_kt}
+            markets = raw.get("available_marketplaces")
             mp_stats = {}
-            names = []
-            if isinstance(markets, dict):
-                names = markets.get("data") or markets.get("marketplaces") or []
-            if isinstance(names, list):
-                for m in names[:10]:
-                    mname = m if isinstance(m, str) else (m.get("id") or m.get("name"))
+            if isinstance(markets, list):
+                for m in markets:
+                    # UI's Marketplaces tab queries every key, not just available_in_kt ones
+                    mname = m.get("key") if isinstance(m, dict) else None
                     if not mname:
                         continue
                     mp_stats[str(mname)] = client.get(
@@ -245,12 +258,20 @@ def erank_keyword_research(
                     )
             raw["marketplace_stats"] = mp_stats
 
-        table = keyword_table(raw)
+        related = raw.get("related_searches")
         summary = {
             "keyword": keyword,
             "country": country,
             "marketplace": marketplace,
-            "table": table,
+            "match": match,
+            "seed": seed_stats(raw),
+            "keyword_ideas": keyword_table(raw),
+            "keyword_ideas_meta": related.get("meta") if isinstance(related, dict) else None,
+            "top_tags": top_tags(raw),
+            "near_matches": near_matches_table(raw),
+            "top_listings": top_listings_table(raw),
+            "search_results_analysis": serp_summary(raw),
+            "marketplaces": marketplaces_table(raw),
             "quota": compact(quota),
         }
         return wrap_result(summary, raw, include_full=include_full)
