@@ -107,7 +107,19 @@ def seed_stats(payload: dict[str, Any]) -> dict[str, Any]:
 def top_listings_table(payload: dict[str, Any]) -> list[dict[str, Any]]:
     tl = _as_map(payload.get("top_listings")).get("listings")
     keep = ("rank", "listing_id", "title", "shop_name", "price", "views", "daily_views", "num_favorers", "age_in_days", "est_sales", "est_revenue", "tags")
-    return [{k: l.get(k) for k in keep} for l in _as_list(tl) if isinstance(l, dict)]
+    out = []
+    for l in _as_list(tl):
+        if not isinstance(l, dict):
+            continue
+        row = {k: l.get(k) for k in keep}
+        # eRank sends no links; Etsy URLs are derivable from id / shop name
+        row["listing_url"] = f"https://www.etsy.com/listing/{l['listing_id']}" if l.get("listing_id") else None
+        row["shop_url"] = f"https://www.etsy.com/shop/{l['shop_name']}" if l.get("shop_name") else None
+        imgs = l.get("images") or []
+        row["image_url"] = imgs[0].get("url_75x75") if imgs and isinstance(imgs[0], dict) else None
+        row["shop_image_url"] = l.get("shop_image_url")
+        out.append(row)
+    return out
 
 
 def serp_summary(payload: dict[str, Any]) -> dict[str, Any] | None:

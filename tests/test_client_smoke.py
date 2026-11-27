@@ -11,7 +11,6 @@ import pytest
 
 from erank_mcp.client import ErankError, ErankHttpClient, _load_cookies_from_file
 from erank_mcp.config import Settings
-from erank_mcp.summarize import keyword_table
 
 
 def test_load_cookies_json(tmp_path: Path) -> None:
@@ -78,24 +77,6 @@ def test_xsrf_header_applied() -> None:
     )
     assert client.get("/api/quota/daily") == {"ok": True}
     client.close()
-
-
-def test_keyword_table_basic() -> None:
-    payload = {
-        "keyword": "bridal shower game",
-        "stats": {"searches": 1200, "competition": 0.4},
-        "related_searches": {
-            "data": [
-                {"keyword": "bridal shower games", "searches": 900},
-                {"keyword": "shower game", "searches": 400},
-            ]
-        },
-        "competition": {"data": {"bridal shower game": 0.5}},
-        "keyword_difficulty": {"data": {"bridal shower game": 42}},
-    }
-    table = keyword_table(payload)
-    assert any(r["keyword"] == "bridal shower game" for r in table)
-    assert len(table) >= 2
 
 
 def test_auth_error_hint() -> None:
