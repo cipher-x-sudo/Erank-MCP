@@ -1,0 +1,75 @@
+# --- Secrets / session (never commit) ---
+.env
+.env.*
+!.env.example
+cookies.json
+cookies.txt
+*.cookies.json
+*.cookie
+**/cookies/
+.erank/
+
+# HAR exports often contain PII / session traces
+*.har
+*.har.gz
+
+# Local MCP / agent dumps
+mcp.json
+.cursor/mcp.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-wheel-metadata/
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.cache/
+*.cover
+.python-version
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Logs / temp ---
+*.log
+tmp/
+temp/
+.tmp/

@@ -1,0 +1,63 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/account/member-preferences",
+    "example_path": "/api/account/member-preferences",
+    "feature_group": "account",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 15,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/account/member-preferences/save",
+    "example_path": "/api/account/member-preferences/save",
+    "feature_group": "account",
+    "query_params": {},
+    "body_sample": {
+      "marketplaces": [
+        "",
+        "etsy"
+      ],
+      "categories": [
+        ""
+      ],
+      "hide_accomplish": 0
+    },
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/check-paddle-restriction",
+    "example_path": "/api/check-paddle-restriction",
+    "feature_group": "account",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/member-shops",
+    "example_path": "/api/member-shops",
+    "feature_group": "account",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

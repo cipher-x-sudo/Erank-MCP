@@ -1,0 +1,67 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/settings/categories",
+    "example_path": "/api/settings/categories",
+    "feature_group": "settings",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/settings/invoices/{member_id}",
+    "example_path": "/api/settings/invoices/2743076",
+    "feature_group": "settings",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/settings/marketplaces",
+    "example_path": "/api/settings/marketplaces",
+    "feature_group": "settings",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/settings/member/{member_id}",
+    "example_path": "/api/settings/member/2743076",
+    "feature_group": "settings",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/settings/shop-list/{member_id}",
+    "example_path": "/api/settings/shop-list/2743076",
+    "feature_group": "settings",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

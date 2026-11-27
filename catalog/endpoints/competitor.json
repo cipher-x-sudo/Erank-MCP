@@ -1,0 +1,158 @@
+[
+  {
+    "method": "POST",
+    "path_template": "/api/competitor/competitors/track",
+    "example_path": "/api/competitor/competitors/track",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": {
+      "shop_name": "pearpebbears"
+    },
+    "referer_template": "/competitor-sales",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/competitors/track-preference",
+    "example_path": "/api/competitor/competitors/track-preference",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/competitor/competitors/track-preference",
+    "example_path": "/api/competitor/competitors/track-preference",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": {
+      "preference_value": [
+        62446517
+      ]
+    },
+    "referer_template": "/competitor-sales",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/daily-sales",
+    "example_path": "/api/competitor/daily-sales",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/competitor-sales",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/full-sales",
+    "example_path": "/api/competitor/full-sales",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/competitor-sales",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/graph",
+    "example_path": "/api/competitor/graph",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/sales-history",
+    "example_path": "/api/competitor/sales-history",
+    "feature_group": "competitor",
+    "query_params": {
+      "shop_name": "LunavelleByJabeen"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/shop-sales/{shop_id}",
+    "example_path": "/api/competitor/shop-sales/62446517",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/competitor-sales",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/shops",
+    "example_path": "/api/competitor/shops",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/top-sellers",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/competitor/top-tags",
+    "example_path": "/api/competitor/top-tags",
+    "feature_group": "competitor",
+    "query_params": {},
+    "body_sample": {
+      "shop": "pearpebbears",
+      "country": "USA"
+    },
+    "referer_template": "/shop-info/pearpebbears",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/competitor/tracking-started",
+    "example_path": "/api/competitor/tracking-started",
+    "feature_group": "competitor",
+    "query_params": {
+      "member_id": "2743076"
+    },
+    "body_sample": null,
+    "referer_template": "/competitor-sales",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  }
+]

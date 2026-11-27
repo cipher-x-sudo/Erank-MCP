@@ -1,0 +1,20 @@
+[
+  {
+    "name": "XSRF-TOKEN",
+    "value": "PASTE_VALUE_HERE",
+    "domain": ".erank.com",
+    "path": "/"
+  },
+  {
+    "name": "sid_er",
+    "value": "PASTE_VALUE_HERE",
+    "domain": "members.erank.com",
+    "path": "/"
+  },
+  {
+    "name": "er_sess_x",
+    "value": "PASTE_VALUE_HERE",
+    "domain": ".erank.com",
+    "path": "/"
+  }
+]

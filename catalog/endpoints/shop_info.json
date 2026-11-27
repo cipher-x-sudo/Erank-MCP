@@ -1,0 +1,43 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/shop-info/{shop}",
+    "example_path": "/api/shop-info/pearpebbears",
+    "feature_group": "shop_info",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/shop-info/pearpebbears",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/shop-info/{shop}/badge",
+    "example_path": "/api/shop-info/pearpebbears/badge",
+    "feature_group": "shop_info",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/shop-info/pearpebbears",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/shop-info/{shop}/listings-fresh",
+    "example_path": "/api/shop-info/pearpebbears/listings-fresh",
+    "feature_group": "shop_info",
+    "query_params": {
+      "offset": "0"
+    },
+    "body_sample": null,
+    "referer_template": "/shop-info/pearpebbears",
+    "har_count": 5,
+    "status_samples": [
+      200
+    ]
+  }
+]

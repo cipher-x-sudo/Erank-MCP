@@ -1,0 +1,92 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/keywordlist/names",
+    "example_path": "/api/keywordlist/names",
+    "feature_group": "keyword_list",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 12,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/keywordlist/quota/names",
+    "example_path": "/api/keywordlist/quota/names",
+    "feature_group": "keyword_list",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/keyword-lists",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/keywordlist/quota/terms/{list_id}",
+    "example_path": "/api/keywordlist/quota/terms/1968657",
+    "feature_group": "keyword_list",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/keyword-lists",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/keywordlist/save-keyword",
+    "example_path": "/api/keywordlist/save-keyword",
+    "feature_group": "keyword_list",
+    "query_params": {},
+    "body_sample": {
+      "listId": 1968657,
+      "keyword": "bridal shower game"
+    },
+    "referer_template": "/keyword-lists",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/keywordlist/terms",
+    "example_path": "/api/keywordlist/terms",
+    "feature_group": "keyword_list",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 9,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/keywordlist/terms-kl/{list_id}/{marketplace}/{country}/{flag}",
+    "example_path": "/api/keywordlist/terms-kl/1968657/etsy/USA/0",
+    "feature_group": "keyword_list",
+    "query_params": {
+      "page": "1",
+      "per_page": "5",
+      "sort_by": "updated_dt",
+      "sort_dir": "desc",
+      "include_stats": "1",
+      "include_google": "0",
+      "include_competition": "0"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 4,
+    "status_samples": [
+      200,
+      0
+    ]
+  }
+]

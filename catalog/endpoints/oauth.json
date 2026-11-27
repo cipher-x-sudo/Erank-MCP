@@ -1,0 +1,31 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/oauth/check-all-revoked-tokens",
+    "example_path": "/api/oauth/check-all-revoked-tokens",
+    "feature_group": "oauth",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/oauth/check-token-validity",
+    "example_path": "/api/oauth/check-token-validity",
+    "feature_group": "oauth",
+    "query_params": {
+      "shop_id": "68807058",
+      "member_id": "2743076"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  }
+]

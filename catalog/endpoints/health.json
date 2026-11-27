@@ -1,0 +1,15 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/health-check/dashboard",
+    "example_path": "/api/health-check/dashboard",
+    "feature_group": "health",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

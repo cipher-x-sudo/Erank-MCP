@@ -1,0 +1,94 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/rank-checker/countries",
+    "example_path": "/api/rank-checker/countries",
+    "feature_group": "rank_checker",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/rank-checker/get-history",
+    "example_path": "/api/rank-checker/get-history",
+    "feature_group": "rank_checker",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/rank-checker/keyword-stats",
+    "example_path": "/api/rank-checker/keyword-stats",
+    "feature_group": "rank_checker",
+    "query_params": {
+      "keyword": "bridal shower game",
+      "country": "GLO",
+      "marketplace": "etsy"
+    },
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/rank-checker/serp",
+    "example_path": "/api/rank-checker/serp",
+    "feature_group": "rank_checker",
+    "query_params": {},
+    "body_sample": {
+      "keyword": "bridal shower game",
+      "shop": "LunavelleByJabeen",
+      "location": null,
+      "shop_name": "LunavelleByJabeen"
+    },
+    "referer_template": "/top-sellers",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/rank-checker/shops",
+    "example_path": "/api/rank-checker/shops",
+    "feature_group": "rank_checker",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/rank-checker/single-term",
+    "example_path": "/api/rank-checker/single-term",
+    "feature_group": "rank_checker",
+    "query_params": {
+      "keyword": "bridal shower game",
+      "shop": "LunavelleByJabeen",
+      "shop_name": "LunavelleByJabeen",
+      "offset": "0"
+    },
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 5,
+    "status_samples": [
+      200
+    ]
+  }
+]

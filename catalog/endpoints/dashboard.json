@@ -1,0 +1,259 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/category-report",
+    "example_path": "/api/dashboard/category-report",
+    "feature_group": "dashboard",
+    "query_params": {
+      "category": "accessories"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/competitors",
+    "example_path": "/api/dashboard/competitors",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/events",
+    "example_path": "/api/dashboard/events",
+    "feature_group": "dashboard",
+    "query_params": {
+      "limit": "5"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/inventory-value/{shop_id}/{shop}",
+    "example_path": "/api/dashboard/inventory-value/68807058/LunavelleByJabeen",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/learn-and-grow",
+    "example_path": "/api/dashboard/learn-and-grow",
+    "feature_group": "dashboard",
+    "query_params": {
+      "lang": "en"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/news",
+    "example_path": "/api/dashboard/news",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/sales-rank-scorecard",
+    "example_path": "/api/dashboard/sales-rank-scorecard",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/shop-profile",
+    "example_path": "/api/dashboard/shop-profile",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/similar-listings",
+    "example_path": "/api/dashboard/similar-listings",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/soe-score-card",
+    "example_path": "/api/dashboard/soe-score-card",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/top-listings-changes",
+    "example_path": "/api/dashboard/top-listings-changes",
+    "feature_group": "dashboard",
+    "query_params": {
+      "shop_id": "68807058"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/total-active-listings/{shop}",
+    "example_path": "/api/dashboard/total-active-listings/LunavelleByJabeen",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/trending-etsy-category-marketplace",
+    "example_path": "/api/dashboard/trending-etsy-category-marketplace",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/dashboard/whats-new",
+    "example_path": "/api/dashboard/whats-new",
+    "feature_group": "dashboard",
+    "query_params": {
+      "lang": "en"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/etsy-popularity",
+    "example_path": "/api/etsy-popularity",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/refresh-data/listings/last-refresh",
+    "example_path": "/api/refresh-data/listings/last-refresh",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/refresh-data/status",
+    "example_path": "/api/refresh-data/status",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/search-history",
+    "example_path": "/api/search-history",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/shop/analyze-history",
+    "example_path": "/api/shop/analyze-history",
+    "feature_group": "dashboard",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

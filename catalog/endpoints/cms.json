@@ -1,0 +1,19 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/cms/banner",
+    "example_path": "/api/cms/banner",
+    "feature_group": "cms",
+    "query_params": {
+      "slug_name": "rank-checker",
+      "lang": "en",
+      "type": "upgrade"
+    },
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 3,
+    "status_samples": [
+      200
+    ]
+  }
+]

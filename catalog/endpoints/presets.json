@@ -1,0 +1,17 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/presets",
+    "example_path": "/api/presets",
+    "feature_group": "presets",
+    "query_params": {
+      "section": "kt_keyword_ideas"
+    },
+    "body_sample": null,
+    "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

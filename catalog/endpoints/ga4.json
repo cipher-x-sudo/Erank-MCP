@@ -1,0 +1,32 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/ga4/check-my-ga",
+    "example_path": "/api/ga4/check-my-ga",
+    "feature_group": "ga4",
+    "query_params": {
+      "shop_id": "68807058"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      0
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/ga4/shop-ga",
+    "example_path": "/api/ga4/shop-ga",
+    "feature_group": "ga4",
+    "query_params": {
+      "shop_id": "68807058"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      0
+    ]
+  }
+]

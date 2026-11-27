@@ -1,0 +1,68 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/top-sellers",
+    "example_path": "/api/top-sellers",
+    "feature_group": "top_sellers",
+    "query_params": {
+      "yearStarted": "all_time",
+      "category": "",
+      "country": "",
+      "page": "1",
+      "perPage": "100",
+      "sort_by": "sales",
+      "sort_order": "desc",
+      "onlyActiveShops": "false"
+    },
+    "body_sample": null,
+    "referer_template": "/top-sellers",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/top-sellers/countries",
+    "example_path": "/api/top-sellers/countries",
+    "feature_group": "top_sellers",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/top-sellers",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/top-sellers/most-sales-etsy",
+    "example_path": "/api/top-sellers/most-sales-etsy",
+    "feature_group": "top_sellers",
+    "query_params": {
+      "country": "ALL"
+    },
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/top-sellers/most-sales-yesterday",
+    "example_path": "/api/top-sellers/most-sales-yesterday",
+    "feature_group": "top_sellers",
+    "query_params": {
+      "page": "2",
+      "perPage": "100"
+    },
+    "body_sample": null,
+    "referer_template": "/top-sellers/yesterday",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  }
+]

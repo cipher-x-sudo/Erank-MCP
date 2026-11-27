@@ -1,0 +1,44 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/quota/daily",
+    "example_path": "/api/quota/daily",
+    "feature_group": "quota",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+    "har_count": 6,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/quota/increment",
+    "example_path": "/api/quota/increment",
+    "feature_group": "quota",
+    "query_params": {},
+    "body_sample": {
+      "feature": "rank_checker",
+      "value": "bridal shower game"
+    },
+    "referer_template": "/top-sellers",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/quota/none-daily",
+    "example_path": "/api/quota/none-daily",
+    "feature_group": "quota",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  }
+]

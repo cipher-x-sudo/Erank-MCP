@@ -1,0 +1,106 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/competitor-sales",
+    "example_path": "/api/motd-v3/competitor-sales",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/competitor-sales",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/dashboard",
+    "example_path": "/api/motd-v3/dashboard",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/keyword-tool",
+    "example_path": "/api/motd-v3/keyword-tool",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/rank-checker",
+    "example_path": "/api/motd-v3/rank-checker",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/rank-checker",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/settings",
+    "example_path": "/api/motd-v3/settings",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/settings",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/top-sellers",
+    "example_path": "/api/motd-v3/top-sellers",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/top-sellers",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/trend-buzz",
+    "example_path": "/api/motd-v3/trend-buzz",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/trend-buzz",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/motd-v3/trending",
+    "example_path": "/api/motd-v3/trending",
+    "feature_group": "motd",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/trending",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

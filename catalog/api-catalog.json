@@ -1,0 +1,1719 @@
+{
+  "source": "members.erank.com.har",
+  "base_url": "https://members.erank.com",
+  "endpoint_count": 99,
+  "marketplaces_seen": [
+    "aliexpress",
+    "amazon",
+    "amazon_books",
+    "amazon_handmade",
+    "amazon_kindle",
+    "bestbuy",
+    "craigslist",
+    "depop",
+    "ebay",
+    "etsy",
+    "facebook_marketplace",
+    "faire",
+    "flipkart",
+    "google_shopping",
+    "gumtree",
+    "homedepot",
+    "idealo",
+    "kijiji",
+    "leboncoin",
+    "lowes",
+    "macys",
+    "mercadolibre",
+    "pinterest",
+    "poshmark",
+    "redbubble",
+    "reverb",
+    "shein",
+    "shopee",
+    "shutterstock",
+    "target",
+    "teacherspayteachers",
+    "temu",
+    "tiktok",
+    "walmart",
+    "wayfair",
+    "zazzle"
+  ],
+  "endpoints": [
+    {
+      "method": "GET",
+      "path_template": "/api/account/member-preferences",
+      "example_path": "/api/account/member-preferences",
+      "feature_group": "account",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 15,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/account/member-preferences/save",
+      "example_path": "/api/account/member-preferences/save",
+      "feature_group": "account",
+      "query_params": {},
+      "body_sample": {
+        "marketplaces": [
+          "",
+          "etsy"
+        ],
+        "categories": [
+          ""
+        ],
+        "hide_accomplish": 0
+      },
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/check-paddle-restriction",
+      "example_path": "/api/check-paddle-restriction",
+      "feature_group": "account",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/member-shops",
+      "example_path": "/api/member-shops",
+      "feature_group": "account",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/cms/banner",
+      "example_path": "/api/cms/banner",
+      "feature_group": "cms",
+      "query_params": {
+        "slug_name": "rank-checker",
+        "lang": "en",
+        "type": "upgrade"
+      },
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 3,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/competitor/competitors/track",
+      "example_path": "/api/competitor/competitors/track",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": {
+        "shop_name": "pearpebbears"
+      },
+      "referer_template": "/competitor-sales",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/competitors/track-preference",
+      "example_path": "/api/competitor/competitors/track-preference",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/competitor/competitors/track-preference",
+      "example_path": "/api/competitor/competitors/track-preference",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": {
+        "preference_value": [
+          62446517
+        ]
+      },
+      "referer_template": "/competitor-sales",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/daily-sales",
+      "example_path": "/api/competitor/daily-sales",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/competitor-sales",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/full-sales",
+      "example_path": "/api/competitor/full-sales",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/competitor-sales",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/graph",
+      "example_path": "/api/competitor/graph",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/sales-history",
+      "example_path": "/api/competitor/sales-history",
+      "feature_group": "competitor",
+      "query_params": {
+        "shop_name": "LunavelleByJabeen"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/shop-sales/{shop_id}",
+      "example_path": "/api/competitor/shop-sales/62446517",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/competitor-sales",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/shops",
+      "example_path": "/api/competitor/shops",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/top-sellers",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/competitor/top-tags",
+      "example_path": "/api/competitor/top-tags",
+      "feature_group": "competitor",
+      "query_params": {},
+      "body_sample": {
+        "shop": "pearpebbears",
+        "country": "USA"
+      },
+      "referer_template": "/shop-info/pearpebbears",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/competitor/tracking-started",
+      "example_path": "/api/competitor/tracking-started",
+      "feature_group": "competitor",
+      "query_params": {
+        "member_id": "2743076"
+      },
+      "body_sample": null,
+      "referer_template": "/competitor-sales",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/category-report",
+      "example_path": "/api/dashboard/category-report",
+      "feature_group": "dashboard",
+      "query_params": {
+        "category": "accessories"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/competitors",
+      "example_path": "/api/dashboard/competitors",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/events",
+      "example_path": "/api/dashboard/events",
+      "feature_group": "dashboard",
+      "query_params": {
+        "limit": "5"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/inventory-value/{shop_id}/{shop}",
+      "example_path": "/api/dashboard/inventory-value/68807058/LunavelleByJabeen",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/learn-and-grow",
+      "example_path": "/api/dashboard/learn-and-grow",
+      "feature_group": "dashboard",
+      "query_params": {
+        "lang": "en"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/news",
+      "example_path": "/api/dashboard/news",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/sales-rank-scorecard",
+      "example_path": "/api/dashboard/sales-rank-scorecard",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/shop-profile",
+      "example_path": "/api/dashboard/shop-profile",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/similar-listings",
+      "example_path": "/api/dashboard/similar-listings",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/soe-score-card",
+      "example_path": "/api/dashboard/soe-score-card",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/top-listings-changes",
+      "example_path": "/api/dashboard/top-listings-changes",
+      "feature_group": "dashboard",
+      "query_params": {
+        "shop_id": "68807058"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/total-active-listings/{shop}",
+      "example_path": "/api/dashboard/total-active-listings/LunavelleByJabeen",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/trending-etsy-category-marketplace",
+      "example_path": "/api/dashboard/trending-etsy-category-marketplace",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/dashboard/whats-new",
+      "example_path": "/api/dashboard/whats-new",
+      "feature_group": "dashboard",
+      "query_params": {
+        "lang": "en"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/etsy-popularity",
+      "example_path": "/api/etsy-popularity",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/refresh-data/listings/last-refresh",
+      "example_path": "/api/refresh-data/listings/last-refresh",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/refresh-data/status",
+      "example_path": "/api/refresh-data/status",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/search-history",
+      "example_path": "/api/search-history",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/shop/analyze-history",
+      "example_path": "/api/shop/analyze-history",
+      "feature_group": "dashboard",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/ga4/check-my-ga",
+      "example_path": "/api/ga4/check-my-ga",
+      "feature_group": "ga4",
+      "query_params": {
+        "shop_id": "68807058"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        0
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/ga4/shop-ga",
+      "example_path": "/api/ga4/shop-ga",
+      "feature_group": "ga4",
+      "query_params": {
+        "shop_id": "68807058"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        0
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/health-check/dashboard",
+      "example_path": "/api/health-check/dashboard",
+      "feature_group": "health",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keywordlist/names",
+      "example_path": "/api/keywordlist/names",
+      "feature_group": "keyword_list",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 12,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keywordlist/quota/names",
+      "example_path": "/api/keywordlist/quota/names",
+      "feature_group": "keyword_list",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/keyword-lists",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keywordlist/quota/terms/{list_id}",
+      "example_path": "/api/keywordlist/quota/terms/1968657",
+      "feature_group": "keyword_list",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/keyword-lists",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/keywordlist/save-keyword",
+      "example_path": "/api/keywordlist/save-keyword",
+      "feature_group": "keyword_list",
+      "query_params": {},
+      "body_sample": {
+        "listId": 1968657,
+        "keyword": "bridal shower game"
+      },
+      "referer_template": "/keyword-lists",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keywordlist/terms",
+      "example_path": "/api/keywordlist/terms",
+      "feature_group": "keyword_list",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 9,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keywordlist/terms-kl/{list_id}/{marketplace}/{country}/{flag}",
+      "example_path": "/api/keywordlist/terms-kl/1968657/etsy/USA/0",
+      "feature_group": "keyword_list",
+      "query_params": {
+        "page": "1",
+        "per_page": "5",
+        "sort_by": "updated_dt",
+        "sort_dir": "desc",
+        "include_stats": "1",
+        "include_google": "0",
+        "include_competition": "0"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 4,
+      "status_samples": [
+        200,
+        0
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/autocomplete",
+      "example_path": "/api/keyword-tool/autocomplete",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "glo"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/keyword-tool/bulk-keywords",
+      "example_path": "/api/keyword-tool/bulk-keywords",
+      "feature_group": "keyword_tool",
+      "query_params": {},
+      "body_sample": {
+        "country": "GLO",
+        "marketplace": "etsy",
+        "keywords": [
+          "red flag",
+          "bridal shower game"
+        ]
+      },
+      "referer_template": "/bulk-keyword-tool",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/keyword-tool/competition",
+      "example_path": "/api/keyword-tool/competition",
+      "feature_group": "keyword_tool",
+      "query_params": {},
+      "body_sample": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO",
+        "keywords": [
+          "red flag green flag bridal shower game",
+          "bridal shower",
+          "bridal shower game",
+          "shower game",
+          "bridal shower games",
+          "...(+85 more)"
+        ]
+      },
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 3,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/etsy-tags",
+      "example_path": "/api/keyword-tool/etsy-tags",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO",
+        "opensearch_filters[exact_match]": "false",
+        "opensearch_filters[phrase_match]": "false",
+        "opensearch_filters[default_match]": "true",
+        "opensearch_filters[broad_match]": "false"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/keyword-tool/google-data",
+      "example_path": "/api/keyword-tool/google-data",
+      "feature_group": "keyword_tool",
+      "query_params": {},
+      "body_sample": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO",
+        "keywords": [
+          "red flag green flag bridal shower game",
+          "bridal shower",
+          "bridal shower game",
+          "shower game",
+          "bridal shower games",
+          "...(+85 more)"
+        ]
+      },
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 3,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/keyword-tool/keyword-difficulty",
+      "example_path": "/api/keyword-tool/keyword-difficulty",
+      "feature_group": "keyword_tool",
+      "query_params": {},
+      "body_sample": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO",
+        "competition": {
+          "red flag green flag bridal shower game": 15,
+          "bridal shower": 1688833,
+          "bridal shower game": 60133,
+          "shower game": 264730,
+          "bridal shower games": 209258,
+          "bridal shower decor": 539439,
+          "bridal shower trivia": 4887,
+          "funny bridal shower": 18344,
+          "fun bridal shower": 18034,
+          "dating red flags": 118,
+          "bridal party": 930362,
+          "bridal printables": 152324,
+          "coquette bridal": 20272,
+          "bridal party game": 58059,
+          "bridal party games": 117947,
+          "bridal brunch games": 3351,
+          "unique bridal games": 5694,
+          "bachelorette game": 41681,
+          "printable game": 645907,
+          "party game": 710026,
+          "game bundle": 243903,
+          "drinking game": 132703,
+          "canva game": 35283,
+          "interactive game": 9066,
+          "icebreaker game": 21827,
+          "editable game": 98759,
+          "quiz game": 34405,
+          "bachelor game": 8168,
+          "relationship game": 2566,
+          "dating game": 796,
+          "funny game": 200643,
+          "debate game": 103,
+          "unique game": 184845,
+          "girls night game": 18104,
+          "printable game cards": 105142,
+          "drink if game": 128472,
+          "hen party game": 18468,
+          "hen do game": 4225,
+          "hens party game": 15506,
+          "bach party game": 3163,
+          "party game bundle": 66404,
+          "trivia quiz game": 22181,
+          "spicy party game": 346,
+          "digital party game": 177179,
+          "bride to be game": 26986,
+          "canva template": 2709712,
+          "bachelorette": 1723764,
+          "sabrina carpenter": 5091,
+          "bachelorette party": 2887640,
+          "digital download art": 7325334,
+          "instant download": 8212996,
+          "bachelorette games": 77069,
+          "party games": 1031631,
+          "camp bachelorette": 30628,
+          "printable games": 639735,
+          "scavenger hunt": 78336,
+          "would she rather": 6564,
+          "bachelorette bingo": 5704,
+          "lake bachelorette": 33588,
+          "hen party games": 29521,
+          "hens party": 144489,
+          "hen do games": 9982,
+          "girls night games": 14651,
+          "most likely to": 46416,
+          "ladies night games": 5657,
+          "card games": 668888,
+          "camping bachelorette": 30795,
+          "galentines party": 32954,
+          "bride games": 58157,
+          "party games adults": 59548,
+          "disco bachelorette": 39384,
+          "print at home": 13638232,
+          "digital download pdf": 858580,
+          "bridesmaid party": 352109,
+          "couples quiz": 1297,
+          "lingerie trivia": 81,
+          "bachelorette parties": 684125,
+          "bride trivia": 2199,
+          "bachelorette ideas": 38340,
+          "icebreaker activity": 13993,
+          "canva template bingo": 0,
+          "bride to be games": 51611,
+          "adult pajama party": 7389,
+          "hen party card games": 3296,
+          "printable card games": 134032,
+          "drinking card games": 4123,
+          "bachelorette idea": 30217,
+          "canva template print": 70342,
+          "camp bach bundle": 58,
+          "camp decorations": 16560
+        },
+        "avg_searches": {
+          "red flag green flag bridal shower game": 0,
+          "bridal shower": 10227,
+          "bridal shower game": 2272,
+          "shower game": 12,
+          "bridal shower games": 11157,
+          "bridal shower decor": 1603,
+          "bridal shower trivia": 261,
+          "funny bridal shower": 1,
+          "fun bridal shower": 1,
+          "dating red flags": 4,
+          "bridal party": 179,
+          "bridal printables": 1,
+          "coquette bridal": 1,
+          "bridal party game": 32,
+          "bridal party games": 772,
+          "bridal brunch games": 8,
+          "unique bridal games": 1,
+          "bachelorette game": 1050,
+          "printable game": 413,
+          "party game": 377,
+          "game bundle": 149,
+          "drinking game": 127,
+          "canva game": 125,
+          "interactive game": 81,
+          "icebreaker game": 59,
+          "editable game": 29,
+          "quiz game": 28,
+          "bachelor game": 27,
+          "relationship game": 13,
+          "dating game": 8,
+          "funny game": 9,
+          "debate game": 4,
+          "unique game": 2,
+          "girls night game": 167,
+          "printable game cards": 63,
+          "drink if game": 58,
+          "hen party game": 50,
+          "hen do game": 21,
+          "hens party game": 13,
+          "bach party game": 13,
+          "party game bundle": 10,
+          "trivia quiz game": 4,
+          "spicy party game": 4,
+          "digital party game": 3,
+          "bride to be game": 25,
+          "canva template": 73998,
+          "bachelorette": 17521,
+          "sabrina carpenter": 7085,
+          "bachelorette party": 6360,
+          "digital download art": 5998,
+          "instant download": 5398,
+          "bachelorette games": 2963,
+          "party games": 2913,
+          "camp bachelorette": 2677,
+          "printable games": 2309,
+          "scavenger hunt": 2098,
+          "would she rather": 1706,
+          "bachelorette bingo": 1600,
+          "lake bachelorette": 1468,
+          "hen party games": 1362,
+          "hens party": 1172,
+          "hen do games": 1079,
+          "girls night games": 1075,
+          "most likely to": 808,
+          "ladies night games": 795,
+          "card games": 593,
+          "camping bachelorette": 508,
+          "galentines party": 184,
+          "bride games": 53,
+          "party games adults": 48,
+          "disco bachelorette": 105,
+          "print at home": 85,
+          "digital download pdf": 108,
+          "bridesmaid party": 29,
+          "couples quiz": 19,
+          "lingerie trivia": 1,
+          "bachelorette parties": 16,
+          "bride trivia": 23,
+          "bachelorette ideas": 33,
+          "icebreaker activity": 14,
+          "canva template bingo": 17,
+          "bride to be games": 31,
+          "adult pajama party": 3,
+          "hen party card games": 13,
+          "printable card games": 19,
+          "drinking card games": 18,
+          "bachelorette idea": 4,
+          "canva template print": 5,
+          "camp bach bundle": 2,
+          "camp decorations": 3
+        },
+        "row_offset": 0
+      },
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 3,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/near-matches",
+      "example_path": "/api/keyword-tool/near-matches",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "country": "GLO",
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/related-searches",
+      "example_path": "/api/keyword-tool/related-searches",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO",
+        "opensearch_filters[exact_match]": "false",
+        "opensearch_filters[phrase_match]": "false",
+        "opensearch_filters[default_match]": "true",
+        "opensearch_filters[broad_match]": "false",
+        "page": "1",
+        "per_page": "10"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 4,
+      "status_samples": [
+        0,
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/serp-analysis",
+      "example_path": "/api/keyword-tool/serp-analysis",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "country": "GLO",
+        "keyword": "bridal shower game",
+        "marketplace": "etsy"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool/serp-analysis?keyword=bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/stats",
+      "example_path": "/api/keyword-tool/stats",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "red flag green flag bridal shower game",
+        "country": "GLO",
+        "marketplace": "etsy"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/stats/available-marketplaces",
+      "example_path": "/api/keyword-tool/stats/available-marketplaces",
+      "feature_group": "keyword_tool",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/keyword-tool/marketplaces?keyword=bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/stats/marketplace",
+      "example_path": "/api/keyword-tool/stats/marketplace",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "bridal shower game",
+        "country": "GLO",
+        "marketplace": "etsy",
+        "source": "etsy"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool/marketplaces?keyword=bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 36,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/keyword-tool/top-listings",
+      "example_path": "/api/keyword-tool/top-listings",
+      "feature_group": "keyword_tool",
+      "query_params": {
+        "keyword": "red flag green flag bridal shower game",
+        "marketplace": "etsy",
+        "country": "GLO"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/listings/analyze-history",
+      "example_path": "/api/listings/analyze-history",
+      "feature_group": "listings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/listings/health-check",
+      "example_path": "/api/listings/health-check",
+      "feature_group": "listings",
+      "query_params": {
+        "order_direction": "desc",
+        "order_field": "total_issues",
+        "page": "1",
+        "per_page": "5"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/competitor-sales",
+      "example_path": "/api/motd-v3/competitor-sales",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/competitor-sales",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/dashboard",
+      "example_path": "/api/motd-v3/dashboard",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/keyword-tool",
+      "example_path": "/api/motd-v3/keyword-tool",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/rank-checker",
+      "example_path": "/api/motd-v3/rank-checker",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/settings",
+      "example_path": "/api/motd-v3/settings",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/top-sellers",
+      "example_path": "/api/motd-v3/top-sellers",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/top-sellers",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/trend-buzz",
+      "example_path": "/api/motd-v3/trend-buzz",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/trend-buzz",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/motd-v3/trending",
+      "example_path": "/api/motd-v3/trending",
+      "feature_group": "motd",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/trending",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/oauth/check-all-revoked-tokens",
+      "example_path": "/api/oauth/check-all-revoked-tokens",
+      "feature_group": "oauth",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/oauth/check-token-validity",
+      "example_path": "/api/oauth/check-token-validity",
+      "feature_group": "oauth",
+      "query_params": {
+        "shop_id": "68807058",
+        "member_id": "2743076"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/presets",
+      "example_path": "/api/presets",
+      "feature_group": "presets",
+      "query_params": {
+        "section": "kt_keyword_ideas"
+      },
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/quota/daily",
+      "example_path": "/api/quota/daily",
+      "feature_group": "quota",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/keyword-tool?keyword=red%20flag%20green%20flag%20bridal%20shower%20game&country=GLO&source=etsy",
+      "har_count": 6,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/quota/increment",
+      "example_path": "/api/quota/increment",
+      "feature_group": "quota",
+      "query_params": {},
+      "body_sample": {
+        "feature": "rank_checker",
+        "value": "bridal shower game"
+      },
+      "referer_template": "/top-sellers",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/quota/none-daily",
+      "example_path": "/api/quota/none-daily",
+      "feature_group": "quota",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/rank-checker/countries",
+      "example_path": "/api/rank-checker/countries",
+      "feature_group": "rank_checker",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/rank-checker/get-history",
+      "example_path": "/api/rank-checker/get-history",
+      "feature_group": "rank_checker",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/rank-checker/keyword-stats",
+      "example_path": "/api/rank-checker/keyword-stats",
+      "feature_group": "rank_checker",
+      "query_params": {
+        "keyword": "bridal shower game",
+        "country": "GLO",
+        "marketplace": "etsy"
+      },
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/rank-checker/serp",
+      "example_path": "/api/rank-checker/serp",
+      "feature_group": "rank_checker",
+      "query_params": {},
+      "body_sample": {
+        "keyword": "bridal shower game",
+        "shop": "LunavelleByJabeen",
+        "location": null,
+        "shop_name": "LunavelleByJabeen"
+      },
+      "referer_template": "/top-sellers",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/rank-checker/shops",
+      "example_path": "/api/rank-checker/shops",
+      "feature_group": "rank_checker",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/rank-checker/single-term",
+      "example_path": "/api/rank-checker/single-term",
+      "feature_group": "rank_checker",
+      "query_params": {
+        "keyword": "bridal shower game",
+        "shop": "LunavelleByJabeen",
+        "shop_name": "LunavelleByJabeen",
+        "offset": "0"
+      },
+      "body_sample": null,
+      "referer_template": "/rank-checker",
+      "har_count": 5,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/settings/categories",
+      "example_path": "/api/settings/categories",
+      "feature_group": "settings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/settings/invoices/{member_id}",
+      "example_path": "/api/settings/invoices/2743076",
+      "feature_group": "settings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/settings/marketplaces",
+      "example_path": "/api/settings/marketplaces",
+      "feature_group": "settings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/settings/member/{member_id}",
+      "example_path": "/api/settings/member/2743076",
+      "feature_group": "settings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/settings/shop-list/{member_id}",
+      "example_path": "/api/settings/shop-list/2743076",
+      "feature_group": "settings",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/settings",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/shop-info/{shop}",
+      "example_path": "/api/shop-info/pearpebbears",
+      "feature_group": "shop_info",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/shop-info/pearpebbears",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/shop-info/{shop}/badge",
+      "example_path": "/api/shop-info/pearpebbears/badge",
+      "feature_group": "shop_info",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/shop-info/pearpebbears",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/shop-info/{shop}/listings-fresh",
+      "example_path": "/api/shop-info/pearpebbears/listings-fresh",
+      "feature_group": "shop_info",
+      "query_params": {
+        "offset": "0"
+      },
+      "body_sample": null,
+      "referer_template": "/shop-info/pearpebbears",
+      "har_count": 5,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/intercom",
+      "example_path": "/api/intercom",
+      "feature_group": "telemetry",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/logs",
+      "example_path": "/api/logs",
+      "feature_group": "telemetry",
+      "query_params": {},
+      "body_sample": {
+        "action": "v3.pageview",
+        "path": "v3.pageview",
+        "value": "{\"date\":1795790701326,\"load_time\":0.1735,\"path\":\"/dashboard\",\"query\":{}}"
+      },
+      "referer_template": "/dashboard",
+      "har_count": 25,
+      "status_samples": [
+        202
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/top-sellers",
+      "example_path": "/api/top-sellers",
+      "feature_group": "top_sellers",
+      "query_params": {
+        "yearStarted": "all_time",
+        "category": "",
+        "country": "",
+        "page": "1",
+        "perPage": "100",
+        "sort_by": "sales",
+        "sort_order": "desc",
+        "onlyActiveShops": "false"
+      },
+      "body_sample": null,
+      "referer_template": "/top-sellers",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/top-sellers/countries",
+      "example_path": "/api/top-sellers/countries",
+      "feature_group": "top_sellers",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/top-sellers",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/top-sellers/most-sales-etsy",
+      "example_path": "/api/top-sellers/most-sales-etsy",
+      "feature_group": "top_sellers",
+      "query_params": {
+        "country": "ALL"
+      },
+      "body_sample": null,
+      "referer_template": "/dashboard",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/top-sellers/most-sales-yesterday",
+      "example_path": "/api/top-sellers/most-sales-yesterday",
+      "feature_group": "top_sellers",
+      "query_params": {
+        "page": "2",
+        "perPage": "100"
+      },
+      "body_sample": null,
+      "referer_template": "/top-sellers/yesterday",
+      "har_count": 2,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/demographics/taxonomies",
+      "example_path": "/api/demographics/taxonomies",
+      "feature_group": "trending",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/category",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/shop-trends",
+      "example_path": "/api/shop-trends",
+      "feature_group": "trending",
+      "query_params": {},
+      "body_sample": {
+        "shop_ids": [
+          10204022,
+          9901413,
+          10967397,
+          9811209,
+          8617622,
+          "...(+95 more)"
+        ]
+      },
+      "referer_template": "/top-sellers",
+      "har_count": 4,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/taxonomies/search",
+      "example_path": "/api/taxonomies/search",
+      "feature_group": "trending",
+      "query_params": {
+        "level": "1",
+        "query": "pearpebbears"
+      },
+      "body_sample": null,
+      "referer_template": "/category",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/trend-buzz",
+      "example_path": "/api/trend-buzz",
+      "feature_group": "trending",
+      "query_params": {
+        "marketplace": "etsy",
+        "country": "USA",
+        "period": "one",
+        "category": "Keyword"
+      },
+      "body_sample": null,
+      "referer_template": "/trend-buzz/etsy/us/daily",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/trending-report",
+      "example_path": "/api/trending-report",
+      "feature_group": "trending",
+      "query_params": {
+        "category": "all",
+        "limit": "100",
+        "marketplace": "etsy",
+        "period": "monthly",
+        "date": "202610"
+      },
+      "body_sample": null,
+      "referer_template": "/trending",
+      "har_count": 2,
+      "status_samples": [
+        0,
+        200
+      ]
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/trending-report/availability",
+      "example_path": "/api/trending-report/availability",
+      "feature_group": "trending",
+      "query_params": {},
+      "body_sample": null,
+      "referer_template": "/trending",
+      "har_count": 1,
+      "status_samples": [
+        200
+      ]
+    }
+  ]
+}

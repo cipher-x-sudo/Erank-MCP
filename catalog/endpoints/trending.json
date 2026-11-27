@@ -1,0 +1,104 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/demographics/taxonomies",
+    "example_path": "/api/demographics/taxonomies",
+    "feature_group": "trending",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/category",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/shop-trends",
+    "example_path": "/api/shop-trends",
+    "feature_group": "trending",
+    "query_params": {},
+    "body_sample": {
+      "shop_ids": [
+        10204022,
+        9901413,
+        10967397,
+        9811209,
+        8617622,
+        "...(+95 more)"
+      ]
+    },
+    "referer_template": "/top-sellers",
+    "har_count": 4,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/taxonomies/search",
+    "example_path": "/api/taxonomies/search",
+    "feature_group": "trending",
+    "query_params": {
+      "level": "1",
+      "query": "pearpebbears"
+    },
+    "body_sample": null,
+    "referer_template": "/category",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/trend-buzz",
+    "example_path": "/api/trend-buzz",
+    "feature_group": "trending",
+    "query_params": {
+      "marketplace": "etsy",
+      "country": "USA",
+      "period": "one",
+      "category": "Keyword"
+    },
+    "body_sample": null,
+    "referer_template": "/trend-buzz/etsy/us/daily",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/trending-report",
+    "example_path": "/api/trending-report",
+    "feature_group": "trending",
+    "query_params": {
+      "category": "all",
+      "limit": "100",
+      "marketplace": "etsy",
+      "period": "monthly",
+      "date": "202610"
+    },
+    "body_sample": null,
+    "referer_template": "/trending",
+    "har_count": 2,
+    "status_samples": [
+      0,
+      200
+    ]
+  },
+  {
+    "method": "GET",
+    "path_template": "/api/trending-report/availability",
+    "example_path": "/api/trending-report/availability",
+    "feature_group": "trending",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/trending",
+    "har_count": 1,
+    "status_samples": [
+      200
+    ]
+  }
+]

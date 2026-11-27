@@ -1,0 +1,32 @@
+[
+  {
+    "method": "GET",
+    "path_template": "/api/intercom",
+    "example_path": "/api/intercom",
+    "feature_group": "telemetry",
+    "query_params": {},
+    "body_sample": null,
+    "referer_template": "/dashboard",
+    "har_count": 2,
+    "status_samples": [
+      200
+    ]
+  },
+  {
+    "method": "POST",
+    "path_template": "/api/logs",
+    "example_path": "/api/logs",
+    "feature_group": "telemetry",
+    "query_params": {},
+    "body_sample": {
+      "action": "v3.pageview",
+      "path": "v3.pageview",
+      "value": "{\"date\":1795790701326,\"load_time\":0.1735,\"path\":\"/dashboard\",\"query\":{}}"
+    },
+    "referer_template": "/dashboard",
+    "har_count": 25,
+    "status_samples": [
+      202
+    ]
+  }
+]
