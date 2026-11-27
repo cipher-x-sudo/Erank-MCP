@@ -1,11 +1,11 @@
 {
   "mcpServers": {
     "erank": {
-      "command": "E:\\Codes\\ERANK MCP\\.venv\\Scripts\\python.exe",
+      "command": "/absolute/path/to/Erank-MCP/.venv/bin/python",
       "args": ["-m", "erank_mcp"],
-      "cwd": "E:\\Codes\\ERANK MCP",
+      "cwd": "/absolute/path/to/Erank-MCP",
       "env": {
-        "ERANK_COOKIE_FILE": "E:\\Codes\\ERANK MCP\\cookies.json",
+        "ERANK_COOKIE_FILE": "/absolute/path/to/Erank-MCP/cookies.json",
         "ERANK_DEFAULT_COUNTRY": "GLO",
         "ERANK_DEFAULT_MARKETPLACE": "etsy",
         "ERANK_ALLOW_WRITES": "0",

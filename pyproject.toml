@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "erank-mcp"
 version = "0.1.0"
-description = "HAR-driven MCP server for members.erank.com (cookie session)"
+description = "MCP server for members.erank.com using cookie-session auth"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

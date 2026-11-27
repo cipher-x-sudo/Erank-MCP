@@ -1,116 +1,158 @@
 # eRank MCP
 
-HAR-driven [MCP](https://modelcontextprotocol.io) server for [members.erank.com](https://members.erank.com). Authenticates with **browser-exported cookies**, mirrors the Axios session headers from the SPA (`X-User-Agent: erank-app/3.0`, XSRF), and exposes **semantic tools** that replay the flows captured in your HAR.
+MCP server for [members.erank.com](https://members.erank.com). Use your logged-in browser session (exported cookies) so Cursor or any MCP client can run keyword research, rank checks, competitor intel, shop analysis, and related eRank workflows.
 
-> Personal / single-account automation. Respect eRank Terms of Service and your plan quotas. Do not commit cookies or HARs that contain PII.
+Not an official eRank product. Use only with accounts you own, respect eRank’s Terms of Service, and watch your plan quotas.
 
-## Setup
+## Requirements
+
+- Python 3.11+
+- Active eRank membership
+- Cookies exported from a logged-in browser session
+
+## Install
 
 ```bash
-cd "E:\Codes\ERANK MCP"
+git clone https://github.com/cipher-x-sudo/Erank-MCP.git
+cd Erank-MCP
 python -m venv .venv
+
+# Windows
 .\.venv\Scripts\activate
+
+# macOS / Linux
+# source .venv/bin/activate
+
+pip install -e .
+```
+
+For development extras:
+
+```bash
 pip install -e ".[dev]"
 ```
 
-### 1. Harmonize the HAR (offline)
+## Authentication
 
-```bash
-python scripts/harmonize_har.py --har members.erank.com.har --out catalog/api-catalog.json
-```
+1. Sign in at https://members.erank.com
+2. Export cookies for `members.erank.com` / `.erank.com` (Cookie-Editor, EditThisCookie, or equivalent) as JSON
+3. Save as `cookies.json` in the project root (see `cookies.example.json`)
 
-Regenerate whenever eRank’s UI/API changes and you capture a new HAR.
+`cookies.json` is gitignored. Do not commit it.
 
-### 2. Export cookies
-
-1. Log in at https://members.erank.com in Chrome.
-2. Export cookies for `members.erank.com` / `.erank.com` with **Cookie-Editor** or **EditThisCookie** (JSON).
-3. Save as **`cookies.json` in the project root** (`E:\Codes\ERANK MCP\cookies.json`).  
-   See `cookies.example.json` for the shape. The file is gitignored.
-
-Optional `.env` (defaults already use root `cookies.json`):
+Optional `.env` (copy from `.env.example`):
 
 ```env
 ERANK_COOKIE_FILE=cookies.json
+ERANK_DEFAULT_COUNTRY=GLO
+ERANK_DEFAULT_MARKETPLACE=etsy
 ERANK_ALLOW_WRITES=0
 ERANK_ALLOW_TELEMETRY=0
+ERANK_WARM_SESSION=1
 ```
 
-### 3. Smoke-check session
+Shop, member, and keyword-list IDs are discovered from the session when unset. You can override them with `ERANK_DEFAULT_SHOP`, `ERANK_DEFAULT_SHOP_ID`, `ERANK_DEFAULT_MEMBER_ID`, or `ERANK_KEYWORD_LIST_ID`.
+
+## Verify session
+
+```bash
+python scripts/smoke_session.py
+```
+
+Or from Python:
 
 ```bash
 python -c "from erank_mcp.server import erank_session_status; import json; print(json.dumps(erank_session_status(), indent=2)[:2000])"
 ```
 
-Or call the MCP tool `erank_session_status` from Cursor after wiring (below).
+A healthy response includes cookie status, shop profile, and quota.
 
-## Cursor MCP config
+## Cursor MCP
 
-Add to Cursor MCP settings (`mcp.json`):
+Add to your Cursor `mcp.json` (use absolute paths for your machine):
 
 ```json
 {
   "mcpServers": {
     "erank": {
-      "command": "E:\\Codes\\ERANK MCP\\.venv\\Scripts\\python.exe",
+      "command": "/absolute/path/to/Erank-MCP/.venv/bin/python",
       "args": ["-m", "erank_mcp"],
+      "cwd": "/absolute/path/to/Erank-MCP",
       "env": {
-        "ERANK_COOKIE_FILE": "E:\\Codes\\ERANK MCP\\cookies.json",
+        "ERANK_COOKIE_FILE": "/absolute/path/to/Erank-MCP/cookies.json",
         "ERANK_DEFAULT_COUNTRY": "GLO",
         "ERANK_DEFAULT_MARKETPLACE": "etsy",
         "ERANK_ALLOW_WRITES": "0",
-        "ERANK_ALLOW_TELEMETRY": "0"
+        "ERANK_ALLOW_TELEMETRY": "0",
+        "ERANK_WARM_SESSION": "1"
       }
     }
   }
 }
 ```
 
-Use the absolute path to the venv interpreter so Cursor finds the installed package.
+Windows example for `command`:
+
+`E:\\path\\to\\Erank-MCP\\.venv\\Scripts\\python.exe`
+
+A sample config lives in `examples/cursor-mcp.json`.
+
+## CLI
+
+```bash
+erank-mcp
+# or
+python -m erank_mcp
+```
 
 ## Tools
 
 | Tool | Purpose |
 |------|---------|
-| `erank_session_status` | Cookie/session health, shop profile, quota |
-| `erank_dashboard_snapshot` | Dashboard bundle (configurable sections) |
-| `erank_keyword_research` | Keyword tool orchestration (HAR flow) |
-| `erank_keyword_list` | List names / terms / terms-kl / quotas |
-| `erank_save_keyword` | Save keyword (writes gated) |
-| `erank_rank_check` | Rank checker + optional SERP |
-| `erank_competitor_intel` | Competitor sales; optional track |
-| `erank_shop_analyze` | Shop info + listings-fresh |
+| `erank_session_status` | Session health, shop profile, quota |
+| `erank_dashboard_snapshot` | Dashboard bundle (selectable sections) |
+| `erank_keyword_research` | Keyword research orchestration |
+| `erank_keyword_list` | Keyword lists, terms, and list quotas |
+| `erank_save_keyword` | Save a keyword (writes gated) |
+| `erank_rank_check` | Rank checker (+ optional SERP) |
+| `erank_competitor_intel` | Competitor sales (+ optional track) |
+| `erank_shop_analyze` | Shop info and listings |
 | `erank_top_sellers` | Top sellers / yesterday / countries |
-| `erank_trending` | Trending report / trend buzz |
+| `erank_trending` | Trending report / buzz |
 | `erank_listing_health` | Listing health check |
-| `erank_settings_read` | Account settings read |
-| `erank_quota` | Daily / none-daily quota |
-| `erank_raw_request` | Any `/api` path escape hatch |
-| `erank_replay_flow` | Replay named HAR flows |
-| `erank_catalog_info` | Inspect HAR catalog templates |
+| `erank_settings_read` | Account settings (read) |
+| `erank_quota` | Daily / non-daily quota |
+| `erank_raw_request` | Escape hatch for any `/api` path |
+| `erank_replay_flow` | Replay a named multi-step flow |
+| `erank_catalog_info` | Inspect endpoint templates |
 
-Mutating endpoints require `ERANK_ALLOW_WRITES=1`. `/api/logs` is blocked unless `ERANK_ALLOW_TELEMETRY=1`.
+Mutating calls need `ERANK_ALLOW_WRITES=1`. Telemetry (`/api/logs`) stays blocked unless `ERANK_ALLOW_TELEMETRY=1`.
 
-## Project layout
+## Configuration
 
-```
-scripts/harmonize_har.py   # HAR → catalog
-catalog/api-catalog.json   # generated endpoint templates
-src/erank_mcp/
-  client.py                # httpx + cookies + XSRF
-  server.py                # MCP tools
-  workflows.py             # multi-step HAR flows
-```
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `ERANK_COOKIE_FILE` | `cookies.json` | Path to cookie export |
+| `ERANK_COOKIE_HEADER` | — | Optional raw `Cookie` header (overrides file) |
+| `ERANK_BASE_URL` | `https://members.erank.com` | API base |
+| `ERANK_DEFAULT_COUNTRY` | `GLO` | Default country code |
+| `ERANK_DEFAULT_MARKETPLACE` | `etsy` | Default marketplace |
+| `ERANK_DEFAULT_SHOP` | auto | Shop name override |
+| `ERANK_DEFAULT_SHOP_ID` | auto | Shop id override |
+| `ERANK_DEFAULT_MEMBER_ID` | auto | Member id override |
+| `ERANK_KEYWORD_LIST_ID` | auto | Keyword list id override |
+| `ERANK_ALLOW_WRITES` | `0` | Allow write / mutate tools |
+| `ERANK_ALLOW_TELEMETRY` | `0` | Allow `/api/logs` |
+| `ERANK_WARM_SESSION` | `1` | Warm session on startup |
 
-## Security checklist
+## Security
 
-- Keep `.env`, cookie files, and `*.har` out of git (see `.gitignore`).
-- Never paste full cookie values into chat logs.
-- Rotate session if a HAR with Intercom/PII was shared.
-- This is not an official eRank API; endpoints can change without notice — re-run the harmonizer.
+- Never commit `cookies.json`, `.env`, or session dumps
+- Prefer file-based cookies over pasting values into chat or configs
+- Keep `ERANK_ALLOW_WRITES=0` unless you intentionally need mutations
+- Rotate the browser session if cookies may have been exposed
+- Endpoints can change without notice; re-export cookies after login/logout
 
-## Tests
+## License
 
-```bash
-pytest -q
-```
+MIT — see [LICENSE](LICENSE).
