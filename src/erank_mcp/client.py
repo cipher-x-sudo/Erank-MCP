@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import secrets
 import string
 from pathlib import Path
@@ -99,6 +100,7 @@ class ErankHttpClient:
                 "Origin": self.settings.erank_base_url.rstrip("/"),
             },
         )
+        self._cookie_path: Path | None = None
         self._load_session_cookies()
         if self.settings.erank_warm_session:
             try:
@@ -137,6 +139,7 @@ class ErankHttpClient:
                     f"Cookie file not found: {path}",
                     hint="Put Cookie-Editor JSON export at project-root cookies.json (see cookies.example.json).",
                 )
+            self._cookie_path = path
             for c in _load_cookies_from_file(path):
                 name = c.get("name")
                 value = c.get("value")
@@ -222,8 +225,48 @@ class ErankHttpClient:
         except httpx.HTTPError as exc:
             raise ErankError(f"Network error: {exc}") from exc
 
-        # Refresh XSRF from Set-Cookie automatically via httpx jar
-        return self._parse_response(resp)
+        # httpx jar picks up rotated Set-Cookie values; persist only after a non-auth-failure
+        body = self._parse_response(resp)
+        self._persist_cookies()
+        return body
+
+    def _persist_cookies(self) -> None:
+        """Write rotated cookie values back to the cookie file so restarts keep the fresh session."""
+        path = self._cookie_path
+        if path is None:
+            return
+        try:
+            text = path.read_text(encoding="utf-8")
+            # shortcut: only JSON exports are updated; Netscape files stay read-only
+            data = json.loads(text)
+        except (OSError, json.JSONDecodeError):
+            return
+        items = data.get("cookies") if isinstance(data, dict) else data
+        if not isinstance(items, list):
+            return
+
+        jar = {}
+        for c in self._client.cookies.jar:
+            jar[(c.name, (c.domain or "").lstrip("."))] = c
+        changed = False
+        for item in items:
+            if not isinstance(item, dict) or not item.get("name"):
+                continue
+            c = jar.get((item["name"], str(item.get("domain") or "members.erank.com").lstrip(".")))
+            if c is None or c.value == item.get("value"):
+                continue
+            item["value"] = c.value
+            if c.expires and "expirationDate" in item:
+                item["expirationDate"] = c.expires
+            changed = True
+        if not changed:
+            return
+        tmp = path.with_suffix(path.suffix + ".tmp")
+        try:
+            tmp.write_text(json.dumps(data, indent=2), encoding="utf-8")
+            os.replace(tmp, path)  # atomic: a crash never leaves a half-written cookie file
+        except OSError:
+            tmp.unlink(missing_ok=True)
 
     def get(self, path: str, **kwargs: Any) -> Any:
         return self.request("GET", path, **kwargs)

@@ -100,3 +100,56 @@ def test_auth_error_hint() -> None:
     assert ei.value.status_code == 401
     assert ei.value.hint
     client.close()
+
+
+def _file_client(tmp_path: Path, handler) -> tuple[ErankHttpClient, Path]:
+    path = tmp_path / "cookies.json"
+    path.write_text(
+        json.dumps(
+            [
+                {"name": "sid_er", "value": "old", "domain": ".erank.com", "path": "/", "expirationDate": 1},
+                {"name": "_ga", "value": "keep", "domain": ".erank.com", "path": "/"},
+            ]
+        ),
+        encoding="utf-8",
+    )
+    client = ErankHttpClient(Settings(erank_cookie_file=str(path), erank_warm_session=False))
+    client._client = httpx.Client(
+        base_url="https://members.erank.com",
+        transport=httpx.MockTransport(handler),
+        cookies=client._client.cookies,
+        headers=client._client.headers,
+    )
+    return client, path
+
+
+def test_rotated_cookies_saved(tmp_path: Path) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={"ok": True},
+            headers={"set-cookie": "sid_er=new; Domain=.erank.com; Path=/; Max-Age=3600"},
+        )
+
+    client, path = _file_client(tmp_path, handler)
+    client.get("/api/quota/daily")
+    saved = {c["name"]: c for c in json.loads(path.read_text(encoding="utf-8"))}
+    assert saved["sid_er"]["value"] == "new"
+    assert saved["sid_er"]["expirationDate"] > 1
+    assert saved["_ga"]["value"] == "keep"
+    client.close()
+
+
+def test_cookies_not_saved_on_auth_failure(tmp_path: Path) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            401,
+            json={"message": "Unauthenticated"},
+            headers={"set-cookie": "sid_er=guest; Domain=.erank.com; Path=/"},
+        )
+
+    client, path = _file_client(tmp_path, handler)
+    with pytest.raises(ErankError):
+        client.get("/api/quota/daily")
+    assert json.loads(path.read_text(encoding="utf-8"))[0]["value"] == "old"
+    client.close()
